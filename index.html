@@ -178,54 +178,46 @@ section{
 </head>
 ```html
 <script>
+document.addEventListener("DOMContentLoaded", () => {
 
-window.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("#agendamentoForm");
 
-    const form = document.getElementById("agendamentoForm");
-
-    if (!form) {
-        console.error("Formulário não encontrado.");
-        return;
-    }
-
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", (e) => {
 
         e.preventDefault();
 
-        const nome = document.getElementById("nome").value;
-        const telefone = document.getElementById("telefone").value;
-        const servico = document.getElementById("servico").value;
-        const data = document.getElementById("data").value;
-        const horario = document.getElementById("horario").value;
+        const nome = document.querySelector("#nome").value;
+        const telefone = document.querySelector("#telefone").value;
+        const servico = document.querySelector("#servico").value;
+        const data = document.querySelector("#data").value;
+        const horario = document.querySelector("#horario").value;
 
-        const mensagem =
-`✨ Agendamento - Isabella Rodrigues Lash Designer ✨
+        const mensagem = `✨ Agendamento - Isabella Rodrigues Lash Designer ✨
 
-Olá, Isabella!
-
-Gostaria de solicitar um agendamento com as seguintes informações:
+Olá Isabella!
 
 👤 Cliente: ${nome}
 📞 Telefone: ${telefone}
 
-💎 Serviço escolhido:
+💎 Serviço:
 ${servico}
 
 📅 Data:
 ${data}
 
-🕒 Horário desejado:
+🕒 Horário:
 ${horario}
 
-Fico aguardando sua confirmação.
+Aguardo sua confirmação. 💕`;
 
-Muito obrigada! 💕`;
+        const whatsappUrl =
+            "https://wa.me/5521972257087?text=" +
+            encodeURIComponent(mensagem);
 
-        const url =
-`https://wa.me/5521972257087?text=${encodeURIComponent(mensagem)}`;
+        window.location.href = whatsappUrl;
+    });
 
-window.location.href = url;
-        
+});
 </script>
 <body>
 
